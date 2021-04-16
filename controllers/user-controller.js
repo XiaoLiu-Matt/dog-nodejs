@@ -29,6 +29,11 @@ module.exports = (app) => {
             })
     } );
 
+    app.post('/api/users/logout', (req, res) => {
+        req.session.destroy();
+        res.send("200");
+    } );
+
     app.post("/api/users/profile", (req, res) => {
         if(req.session['profile']) {
             const currentUser = req.session['profile']
