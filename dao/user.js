@@ -36,12 +36,20 @@ const findUserByNameAndPassword = async (userName, password) => {
     return UserModel.findOne(filter);
 };
 
+const findUserByCredentials = (credetials) => {
+    return UserModel.findOne({
+        userName: credetials.userName,
+        password: credetials.password
+    })
+    // return usersModel.find({username})
+}
+
 const updateUserByName = async (userName, updated_info) => {
     const filter = { userName };
     return UserModel.findOneAndUpdate(filter, updated_info);
 };
 
-module.exports = { createUser,findUserByName,findUserByNameAndPassword, findUsers, updateUserByName}
+module.exports = { createUser,findUserByName,findUserByNameAndPassword, findUsers, updateUserByName, findUserByCredentials}
 
 
 // Example:

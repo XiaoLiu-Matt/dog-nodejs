@@ -1,8 +1,7 @@
 
 const user = require("../dao/user")
-const bodyParser = require('body-parser')
 module.exports = (app) => {
-    app.post('/api/signup', bodyParser.json(), async (req, res) => {
+    app.post('/api/users/signup', async (req, res) => {
         try {
             const result = await user.createUser({
                 userName: req.body.userName,
@@ -10,9 +9,32 @@ module.exports = (app) => {
                 role : req.body.role,
                 comments: []
             });
+            req.session['profile'] = result
             res.send(result);
         } catch (err) {
             console.log(err)
+        }
+    });
+
+    app.post('/api/users/login', (req, res) => {
+        const credentials = req.body;
+        user.findUserByCredentials(credentials)
+            .then((actualUser) => {
+                if(actualUser) {
+                    req.session['profile'] = actualUser
+                    res.send(actualUser)
+                } else {
+                    res.send("0")
+                }
+            })
+    } );
+
+    app.post("/api/users/profile", (req, res) => {
+        if(req.session['profile']) {
+            const currentUser = req.session['profile']
+            res.send(currentUser)
+        } else {
+            res.send({})
         }
     });
 
