@@ -4,8 +4,7 @@ const { Schema, model } = mongoose;
 const UserSchema = new Schema({
     userName: { type: String, required: true, index: true, unique: true },
     password: { type: String, required: true },
-    role : String,
-    comments: [String]
+    role : String
 });
 // This model is mapping to MongoDB 'user' collection
 const UserModel = model('User', UserSchema, 'userInfo');

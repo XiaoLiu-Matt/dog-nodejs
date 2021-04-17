@@ -6,8 +6,7 @@ module.exports = (app) => {
             const result = await user.createUser({
                 userName: req.body.userName,
                 password: req.body.password,
-                role : req.body.role,
-                comments: []
+                role : req.body.role
             });
             req.session['profile'] = result
             res.send(result);
