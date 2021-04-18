@@ -2,17 +2,18 @@
 const user = require("../dao/user")
 module.exports = (app) => {
     app.post('/api/users/signup', async (req, res) => {
-        try {
-            const result = await user.createUser({
+            user.createUser({
                 userName: req.body.userName,
                 password: req.body.password,
                 role : req.body.role
-            });
-            req.session['profile'] = result
-            res.send(result);
-        } catch (err) {
-            console.log(err)
-        }
+            }).then((actualUser) => {
+                if(actualUser) {
+                    req.session['profile'] = actualUser
+                    res.send(actualUser)
+                } else {
+                    res.send("0")
+                }
+            })
     });
 
     app.post('/api/users/login', (req, res) => {

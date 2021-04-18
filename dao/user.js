@@ -18,6 +18,7 @@ const createUser = async (user_instance) => {
     {
         return UserModel.create(user_instance);
     }
+   return null
 
 }
 
