@@ -42,6 +42,20 @@ module.exports = (app) => {
         }
     });
 
+    app.put("/api/users/profile", (req, res) => {
+        if(req.session['profile']) {
+            const currentUser = req.session['profile']
+            req.session['profile'] = req.body
+            console.log("req body is:", req.body)
+            // console.log(req.body.currentUser)
+            res.send(req.body)
+            user.updateUserByName(req.body.userName,req.body)
+
+        } else {
+            res.send({})
+        }
+    });
+
     app.get('/api/users/:name/:password', async (req, res) => {
         try {
             const result = await user.findUserByNameAndPassword(req.params.name, req.params.password);
