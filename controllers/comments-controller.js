@@ -12,8 +12,8 @@ module.exports = (app) => {
                 res.send(comment)
             }))
 
-    app.delete("/api/users/:userName/comments/:commentId", (req, res) =>
-        commentsDao.deleteComment(req.params.userName, req.params.commentId)
+    app.delete("/api/comments/:commentId", (req, res) =>
+        commentsDao.deleteComment(req.params.commentId)
             .then(comment => res.json(comment))
     )
 
@@ -29,4 +29,8 @@ module.exports = (app) => {
     app.get('/api/dogs/:dogId/comments', (req, res) =>
         commentsDao.findCommentsByDogId(req.params.dogId)
             .then(comments => res.json(comments)))
+
+    app.get('/api/comments/:commentId', (req, res) =>
+        commentsDao.findCommentById(req.params.commentId)
+            .then(comment => res.json(comment)))
 }
