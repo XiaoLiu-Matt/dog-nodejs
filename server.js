@@ -25,6 +25,7 @@ app.use(function (req, res, next) {
     next();
 });
 require('./controllers/user-controller')(app)
+require('./controllers/comments-controller')(app)
 // app.get('/test', async (req, res) => {
 //     try {
 //         res.send('hello world');
