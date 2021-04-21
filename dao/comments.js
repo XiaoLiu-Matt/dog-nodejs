@@ -1,4 +1,6 @@
 const mongoose = require("mongoose")
+const ObjectId = mongoose.Types.ObjectId;
+
 const commentsSchema = mongoose.Schema({
     // _id: String,
     userName: String,
@@ -26,5 +28,5 @@ const findCommentsByDogId = (dogId) =>
     commentModel.find({dogId: dogId})
 
 const findCommentById = (commentId) =>
-    commentModel.findById(commentId)
+    commentModel.find({_id:ObjectId(commentId)})
 module.exports = { createComment, deleteComment, updateComment, findCommentsByUserName, findCommentsByDogId, findCommentById}

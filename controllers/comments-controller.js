@@ -19,7 +19,10 @@ module.exports = (app) => {
 
     app.put("/api/comments/:commentId", (req, res) =>
         commentsDao.updateComment(req.params.commentId, req.body.comment)
-            .then(comment => res.json(comment))
+            .then(comment => {
+                //console.log(req.body.comment)
+                res.json(comment)
+            })
     )
 
     app.get('/api/users/:userName/comments', (req, res) =>
