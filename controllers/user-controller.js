@@ -43,14 +43,8 @@ module.exports = (app) => {
         }
     });
 
-    // app.post("/api/users/profile/:userName", (req, res) => {
-    //     if(req.userName) {
-    //         res.send(req.body)
-    //         user.findUserByName(userName)
-    //     } else {
-    //         res.send({})
-    //     }
-    // });
+
+
 
     app.put("/api/users/profile", (req, res) => {
         if(req.session['profile']) {
@@ -66,16 +60,7 @@ module.exports = (app) => {
         }
     });
 
-    // app.get('/api/users/:name/:password', async (req, res) => {
-    //     console.log("this has password")
-    //     try {
-    //
-    //         const result = await user.findUserByNameAndPassword(req.params.name, req.params.password);
-    //         res.send(result);
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // });
+
 
     app.get('/api/users/profile/:name', async (req, res) => {
         console.log("this is get name function")

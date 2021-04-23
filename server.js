@@ -51,7 +51,7 @@ app.use(function (req, res, next) {
 require('./controllers/user-controller')(app)
 require('./controllers/comments-controller')(app)
 
-const port = process.env.PORT;
+const port = process.env.PORT || 4001;
 
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}/`);
