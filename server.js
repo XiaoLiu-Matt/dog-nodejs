@@ -40,9 +40,9 @@ app.use(session({
 // mongodb://YOUR_USERNAME:YOUR_PASSWORD@iad2-c7-0.mongo.objectrocket.com:53889,iad2-c7-2.mongo.objectrocket.com:53889,iad2-c7-1.mongo.objectrocket.com:53889/YOUR_DATABASE_NAME?replicaSet=e32099f5c50d45138556f82ad258847e
 // Configures CORS
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Headers',
-        'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+        'Content-Type, X-Requested-With, Origin, Accept');
     res.header('Access-Control-Allow-Methods',
         'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.header("Access-Control-Allow-Credentials", "true");
