@@ -1,5 +1,5 @@
-// require('./database')()
-const mongoose = require('mongoose');
+require('./database')()
+
 const express = require('express')
 const app = express()
 
@@ -29,7 +29,7 @@ app.use(bodyParser.json())
 //     }
 // });
 
-mongoose.connect('mongodb://YOUR_USERNAME:YOUR_PASSWORD@iad2-c7-0.mongo.objectrocket.com:53889,iad2-c7-2.mongo.objectrocket.com:53889,iad2-c7-1.mongo.objectrocket.com:53889/DOG?replicaSet=e32099f5c50d45138556f82ad258847e')
+// mongoose.connect('mongodb://YOUR_USERNAME:YOUR_PASSWORD@iad2-c7-0.mongo.objectrocket.com:53889,iad2-c7-2.mongo.objectrocket.com:53889,iad2-c7-1.mongo.objectrocket.com:53889/DOG?replicaSet=e32099f5c50d45138556f82ad258847e')
 const session = require('express-session')
 app.use(session({
     secret: 'keyboard cat',
@@ -51,9 +51,9 @@ app.use(function (req, res, next) {
 require('./controllers/user-controller')(app)
 require('./controllers/comments-controller')(app)
 
-// const port = process.env.PORT;
-//
-// app.listen(port, () => {
-//     console.log(`Listening on http://localhost:${port}/`);
-// });
-app.listen(4001)
+const port = process.env.PORT;
+
+app.listen(port, () => {
+    console.log(`Listening on http://localhost:${port}/`);
+});
+// app.listen(4001)
