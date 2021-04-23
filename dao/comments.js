@@ -29,4 +29,8 @@ const findCommentsByDogId = (dogId) =>
 
 const findCommentById = (commentId) =>
     commentModel.find({_id:ObjectId(commentId)})
-module.exports = { createComment, deleteComment, updateComment, findCommentsByUserName, findCommentsByDogId, findCommentById}
+
+const findComments = async () => {
+    return commentModel.find();
+};
+module.exports = { createComment, deleteComment, updateComment, findComments,findCommentsByUserName, findCommentsByDogId, findCommentById}

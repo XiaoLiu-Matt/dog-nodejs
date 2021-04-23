@@ -36,4 +36,13 @@ module.exports = (app) => {
     app.get('/api/comments/:commentId', (req, res) =>
         commentsDao.findCommentById(req.params.commentId)
             .then(comment => res.json(comment)))
+
+    app.get('/api/comments', async (req, res) => {
+        try {
+            const result = await commentsDao.findComments()
+            res.send(result);
+        } catch (err) {
+            console.log(err)
+        }
+    })
 }
