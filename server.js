@@ -40,7 +40,7 @@ app.use(session({
 // mongodb://YOUR_USERNAME:YOUR_PASSWORD@iad2-c7-0.mongo.objectrocket.com:53889,iad2-c7-2.mongo.objectrocket.com:53889,iad2-c7-1.mongo.objectrocket.com:53889/YOUR_DATABASE_NAME?replicaSet=e32099f5c50d45138556f82ad258847e
 // Configures CORS
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://dog-react-client.herokuapp.com');
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
         'Content-Type, X-Requested-With, Origin, Accept');
     res.header('Access-Control-Allow-Methods',
