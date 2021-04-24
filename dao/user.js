@@ -37,6 +37,7 @@ const findUserByNameAndPassword = async (userName, password) => {
 };
 
 const findUserByCredentials = (credetials) => {
+    console.log(credetials)
     return UserModel.findOne({
         userName: credetials.userName,
         password: credetials.password

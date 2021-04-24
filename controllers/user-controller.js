@@ -18,8 +18,10 @@ module.exports = (app) => {
 
     app.post('/api/users/login', (req, res) => {
         const credentials = req.body;
+        console.log(credentials)
         user.findUserByCredentials(credentials)
             .then((actualUser) => {
+                console.log(actualUser)
                 if(actualUser) {
                     req.session['profile'] = actualUser
                     res.send(actualUser)
