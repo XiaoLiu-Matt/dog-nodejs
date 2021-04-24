@@ -38,12 +38,11 @@ module.exports = (app) => {
         if(req.session['profile']) {
             const currentUser = req.session['profile']
             res.send(currentUser)
+            console.log('currentuser in post', currentUser)
         } else {
             res.send({})
         }
     });
-
-
 
 
     app.put("/api/users/profile", (req, res) => {
